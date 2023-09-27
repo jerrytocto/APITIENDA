@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,12 @@ Route::get('compras/{id}/productos',[CompraController::class,'buyByIdWithProduct
 Route::post('compras',[CompraController::class,'realizarCompra']);
 Route::delete('compras/{id}',[CompraController::class,'deleteBuy']);
 
+Route::get('users',[UserController::class,'getAllUsers']);
+Route::get('users/{id}',[UserController::class,'getUserById']);
+Route::post('users',[UserController::class,'createUser']);
+Route::post('users/login',[UserController::class,'login']);
+Route::put('users/update/{id}',[UserController::class,'updateUser']);
+Route::delete('users/{id}',[UserController::class,'deleteUser']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
